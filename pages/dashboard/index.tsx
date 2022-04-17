@@ -97,21 +97,24 @@ function LoadPosts(auth) {
       {data
         .slice(0)
         .reverse()
-        .map((post) => (
-          <Post
-            key={post.id}
-            name={post.author.name}
-            username={`@${post.author.username}`}
-            body={post.content}
-            time={timeAgo(post.createdAt)}
-            likes={post.likes.length}
-            liked={post.likes
-              .map((like) => like.user.username)
-              .includes(auth.username)}
-            id={post.id}
-            amITheAuthor={post.author.username === auth.username}
-          />
-        ))}
+        .map((post) => {
+          // console.log(index);
+          return (
+            <Post
+              key={post.id}
+              name={post.author.name}
+              username={`@${post.author.username}`}
+              body={post.content}
+              time={timeAgo(post.createdAt)}
+              likes={post.likes.length}
+              liked={post.likes
+                .map((like) => like.user.username)
+                .includes(auth.username)}
+              id={post.id}
+              amITheAuthor={post.author.username === auth.username}
+            />
+          );
+        })}
     </AnimatePresence>
   );
 }

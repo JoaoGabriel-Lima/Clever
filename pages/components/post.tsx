@@ -9,7 +9,7 @@ import axios from "axios";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useSWRConfig } from "swr";
 import toast, { Toaster } from "react-hot-toast";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const PostStyle = styled.div`
   width: 100%;
@@ -119,11 +119,10 @@ const Post = (props) => {
       >
         <div
           id="Profile"
-          className="rounded-full max-w-[3.4rem] min-w-[3.4rem] w-full min-h-[3.4rem] max-h-[3.4rem] h-full
-      "
+          className="rounded-full max-w-[3.4rem] min-w-[3.4rem] w-full min-h-[3.4rem] max-h-[3.4rem] h-full"
         >
           {props.loading ? (
-            <div className="rounded-full w-full h-full bg-[#51516c]/50 animate-pulse"></div>
+            <div className="rounded-full w-full h-full min-h-[3.4rem] bg-[#51516c]/50 animate-pulse"></div>
           ) : (
             <img
               src={`https://avatars.dicebear.com/api/miniavs/${props.name}.svg`}
@@ -182,28 +181,12 @@ const Post = (props) => {
                 className="flex cursor-pointer items-center text-white/80 text-[1.2rem]"
                 onClick={() => likePost(props.id)}
               >
-                <AnimatePresence>
-                  {liked ? (
-                    <motion.div
-                      // whileHover={{ scale: 1.1 }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                    >
-                      <AiFillHeart className="text-red-500" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      // whileHover={{ scale: 1.1 }}
-                      initial={{ opacity: 0.5 }}
-                      animate={{ opacity: 1 }}
-                    >
-                      <AiOutlineHeart />
-                    </motion.div>
-                  )}
-                  <span className="ml-[0.35rem] text-[13px]">
-                    {likes || "0"}
-                  </span>
-                </AnimatePresence>
+                {liked ? (
+                  <AiFillHeart className="text-red-500" />
+                ) : (
+                  <AiOutlineHeart />
+                )}
+                <span className="ml-[0.35rem] text-[13px]">{likes || "0"}</span>
               </div>
             </div>
             {props.amITheAuthor && (
