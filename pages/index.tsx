@@ -16,7 +16,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import { setCookie } from "nookies";
 import axios from "axios";
 import nookies from "nookies";
-import getUserData from "./middleware/utils";
+import getUserData from "../util/middleware/utils";
 
 const SignIn: NextPage = () => {
   const [email, setEmail] = useState("");

@@ -8,7 +8,7 @@ import { HomeCointainer } from "../styles/components/home";
 import Input from "./components/input";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import getUserData from "./middleware/utils";
+import getUserData from "../util/middleware/utils";
 import nookies, { setCookie } from "nookies";
 import { useRouter } from "next/router";
 import axios from "axios";

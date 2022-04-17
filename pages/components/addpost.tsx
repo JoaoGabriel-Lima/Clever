@@ -8,7 +8,7 @@ import { AiOutlineGif } from "react-icons/ai";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
 import { parseCookies } from "nookies";
-import checkUserToken from "../middleware/interceptor";
+import checkUserToken from "../../util/middleware/interceptor";
 import axios from "axios";
 
 const AddPost = () => {

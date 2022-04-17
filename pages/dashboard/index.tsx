@@ -11,13 +11,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import Post from "../components/post";
 import AddPost from "../components/addpost";
 import nookies from "nookies";
-import getUserData from "../middleware/utils";
+import getUserData from "../../util/middleware/utils";
 import { useRouter } from "next/router";
 import axios from "axios";
 import useSWR from "swr";
 import { parseCookies } from "nookies";
 import { useSWRConfig } from "swr";
-import checkUserToken from "../middleware/interceptor";
+import checkUserToken from "../../util/middleware/interceptor";
 import toast, { Toaster } from "react-hot-toast";
 
 // Parse a string to date and return a string with how many time ago

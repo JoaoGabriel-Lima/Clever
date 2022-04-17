@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { parseCookies } from "nookies";
-import checkUserToken from "../middleware/interceptor";
+import checkUserToken from "../../util/middleware/interceptor";
 import axios from "axios";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useSWRConfig } from "swr";
@@ -64,14 +64,21 @@ const Post = (props) => {
   };
 
   const likePost = (PostId) => {
+    const hasLiked = !liked;
+    setLiked(!liked);
+    if (hasLiked) {
+      setLikes(Number.parseInt(likes, 10) + 1);
+    } else {
+      setLikes(Number.parseInt(likes, 10) - 1);
+    }
     const parsedCookies = parseCookies();
     return checkUserToken(
       parsedCookies.token,
       parsedCookies.refresh_token
-    ).then((res) => {
+    ).then(async (res) => {
       if (res == true) {
-        return axios
-          .post(
+        try {
+          const res = await axios.post(
             "https://cleverbackend.herokuapp.com/api/posts/like",
             { postId: PostId },
             {
@@ -79,22 +86,31 @@ const Post = (props) => {
                 Authorization: `Bearer ${parsedCookies.token}`,
               },
             }
-          )
-          .then((res) => {
-            if (res.status == 201) {
-              if (res.data.message == "Liked") {
-                setLiked(true);
-                setLikes(Number.parseInt(likes, 10) + 1);
-                return true;
-              } else {
-                setLiked(false);
-                setLikes(Number.parseInt(likes, 10) - 1);
-                return false;
-              }
+          );
+
+          if (res.status == 201) {
+            if (res.data.message == "Liked") {
+              // setLiked(true);
+              // setLikes(Number.parseInt(likes, 10) + 1);
+              return true;
             } else {
-              return false;
+              // setLiked(false);
+              // setLikes(Number.parseInt(likes, 10) - 1);
+              return true;
             }
-          });
+          } else {
+          }
+        } catch (err) {
+          const hasLiked = !liked;
+          setLiked(!liked);
+          if (hasLiked) {
+            setLikes(Number.parseInt(likes, 10) + 1);
+          } else {
+            setLikes(Number.parseInt(likes, 10) - 1);
+          }
+          toast.error("Failed to like the post.");
+          return false;
+        }
       } else {
         return false;
       }
