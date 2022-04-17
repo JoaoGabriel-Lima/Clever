@@ -24,7 +24,7 @@ const AddPost = () => {
     ).then((res) => {
       if (res == true) {
         return axios
-          .post("http://192.168.100.95:8080/api/posts/add", post, {
+          .post("https://cleverbackend.herokuapp.com/api/posts/add", post, {
             headers: {
               Authorization: `Bearer ${parsedCookies.token}`,
             },
@@ -54,7 +54,7 @@ const AddPost = () => {
       addPostFn(newPost).then((res) => {
         if (res == true) {
           setPostContent("");
-          mutate("http://192.168.100.95:8080/api/posts");
+          mutate("https://cleverbackend.herokuapp.com/api/posts");
           toast.success("Successfully added the new post.");
           setLoading(false);
         } else {

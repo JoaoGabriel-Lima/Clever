@@ -33,7 +33,7 @@ const SignIn: NextPage = () => {
 
     try {
       const response = await axios.post(
-        "http://192.168.100.95:8080/api/login",
+        "https://cleverbackend.herokuapp.com/api/login",
         {
           email: email,
           password: password,

@@ -69,7 +69,7 @@ const fetcher = (url) => {
 };
 function LoadPosts(auth) {
   const { data, error } = useSWR(
-    "http://192.168.100.95:8080/api/posts",
+    "https://cleverbackend.herokuapp.com/api/posts",
     fetcher
   );
 
@@ -126,7 +126,7 @@ const Dashboard: NextPage = (props: any) => {
   };
 
   const loadMorePosts = () => {
-    const myPromise = mutate("http://192.168.100.95:8080/api/posts");
+    const myPromise = mutate("https://cleverbackend.herokuapp.com/api/posts");
     // scroll to top
     window.scrollTo(0, 0);
     toast.promise(myPromise, {

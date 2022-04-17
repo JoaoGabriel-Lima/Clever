@@ -39,7 +39,7 @@ const Post = (props) => {
         if (res == true) {
           try {
             const res = await axios.delete(
-              `http://192.168.100.95:8080/api/posts/remove/${PostId}`,
+              `https://cleverbackend.herokuapp.com/api/posts/remove/${PostId}`,
               {
                 headers: {
                   Authorization: `Bearer ${parsedCookies.token}`,
@@ -47,7 +47,7 @@ const Post = (props) => {
               }
             );
             if (res.status == 201) {
-              mutate("http://192.168.100.95:8080/api/posts");
+              mutate("https://cleverbackend.herokuapp.com/api/posts");
               toast.success("Successfully deleted the post.");
               return true;
             } else {
@@ -72,7 +72,7 @@ const Post = (props) => {
       if (res == true) {
         return axios
           .post(
-            "http://192.168.100.95:8080/api/posts/like",
+            "https://cleverbackend.herokuapp.com/api/posts/like",
             { postId: PostId },
             {
               headers: {

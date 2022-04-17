@@ -4,11 +4,14 @@ import { destroyCookie, setCookie } from "nookies";
 
 const checkUserToken = async (token, refreshToken) => {
   try {
-    const auth = await axios.get(`http://192.168.100.95:8080/api/check-token`, {
-      headers: {
-        Authorization: `Bearer ${token || "3536364758758585"}`,
-      },
-    });
+    const auth = await axios.get(
+      `https://cleverbackend.herokuapp.com/api/check-token`,
+      {
+        headers: {
+          Authorization: `Bearer ${token || "3536364758758585"}`,
+        },
+      }
+    );
     if (auth.status === 200) {
       return true;
     }
@@ -18,7 +21,7 @@ const checkUserToken = async (token, refreshToken) => {
         // refresh token
         try {
           const data = await axios.post(
-            `http://192.168.100.95:8080/api/refresh-token`,
+            `https://cleverbackend.herokuapp.com/api/refresh-token`,
             {
               refresh_token: refreshToken || "4545454646",
             }
