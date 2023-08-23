@@ -5,7 +5,7 @@ import { destroyCookie, setCookie } from "nookies";
 const checkUserToken = async (token, refreshToken) => {
   try {
     const auth = await axios.get(
-      `https://cleverbackend.herokuapp.com/api/check-token`,
+      `https://clever-backend.onrender.com/api/check-token`,
       {
         headers: {
           Authorization: `Bearer ${token || "3536364758758585"}`,
@@ -21,7 +21,7 @@ const checkUserToken = async (token, refreshToken) => {
         // refresh token
         try {
           const data = await axios.post(
-            `https://cleverbackend.herokuapp.com/api/refresh-token`,
+            `https://clever-backend.onrender.com/api/refresh-token`,
             {
               refresh_token: refreshToken || "4545454646",
             }
