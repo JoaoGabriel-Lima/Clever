@@ -33,11 +33,11 @@ const SignIn: NextPage = () => {
 
     try {
       const response = await axios.post(
-        "https://cleverbackend.herokuapp.com/api/login",
+        "https://clever-backend.onrender.com/api/login",
         {
           email: email,
           password: password,
-        }
+        },
       );
 
       if (response) {

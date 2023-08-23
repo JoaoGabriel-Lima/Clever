@@ -20,11 +20,11 @@ const AddPost = () => {
     const parsedCookies = parseCookies();
     return checkUserToken(
       parsedCookies.token,
-      parsedCookies.refresh_token
+      parsedCookies.refresh_token,
     ).then((res) => {
       if (res == true) {
         return axios
-          .post("https://cleverbackend.herokuapp.com/api/posts/add", post, {
+          .post("https://clever-backend.onrender.com/api/posts/add", post, {
             headers: {
               Authorization: `Bearer ${parsedCookies.token}`,
             },
@@ -54,7 +54,7 @@ const AddPost = () => {
       addPostFn(newPost).then((res) => {
         if (res == true) {
           setPostContent("");
-          mutate("https://cleverbackend.herokuapp.com/api/posts");
+          mutate("https://clever-backend.onrender.com/api/posts");
           toast.success("Successfully added the new post.");
           setLoading(false);
         } else {

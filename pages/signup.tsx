@@ -39,24 +39,24 @@ const SingUp: NextPage = () => {
 
     try {
       const response = await axios.post(
-        "https://cleverbackend.herokuapp.com/api/users",
+        "https://clever-backend.onrender.com/api/users",
         {
           name: name,
           username: username,
           email: email,
           password: password,
-        }
+        },
       );
 
       if (response) {
         if (response.status === 201) {
           try {
             const response = await axios.post(
-              "https://cleverbackend.herokuapp.com/api/login",
+              "https://clever-backend.onrender.com/api/login",
               {
                 email: email,
                 password: password,
-              }
+              },
             );
 
             if (response) {
@@ -72,7 +72,7 @@ const SingUp: NextPage = () => {
                   {
                     maxAge: 10 * 24 * 60 * 60,
                     path: "/",
-                  }
+                  },
                 );
                 setLoading(false);
                 router.push("/dashboard");
@@ -131,7 +131,7 @@ const SingUp: NextPage = () => {
                 value={username}
                 onChange={(e) =>
                   setUsername(
-                    e.target.value.replace(/[^a-zA-Z0-9_ ]/g, "").toLowerCase()
+                    e.target.value.replace(/[^a-zA-Z0-9_ ]/g, "").toLowerCase(),
                   )
                 }
                 required

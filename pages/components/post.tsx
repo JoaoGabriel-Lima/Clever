@@ -39,15 +39,15 @@ const Post = (props) => {
         if (res == true) {
           try {
             const res = await axios.delete(
-              `https://cleverbackend.herokuapp.com/api/posts/remove/${PostId}`,
+              `https://clever-backend.onrender.com/api/posts/remove/${PostId}`,
               {
                 headers: {
                   Authorization: `Bearer ${parsedCookies.token}`,
                 },
-              }
+              },
             );
             if (res.status == 201) {
-              mutate("https://cleverbackend.herokuapp.com/api/posts");
+              mutate("https://clever-backend.onrender.com/api/posts");
               toast.success("Successfully deleted the post.");
               return true;
             } else {
@@ -59,7 +59,7 @@ const Post = (props) => {
             return false;
           }
         }
-      }
+      },
     );
   };
 
@@ -74,18 +74,18 @@ const Post = (props) => {
     const parsedCookies = parseCookies();
     return checkUserToken(
       parsedCookies.token,
-      parsedCookies.refresh_token
+      parsedCookies.refresh_token,
     ).then(async (res) => {
       if (res == true) {
         try {
           const res = await axios.post(
-            "https://cleverbackend.herokuapp.com/api/posts/like",
+            "https://clever-backend.onrender.com/api/posts/like",
             { postId: PostId },
             {
               headers: {
                 Authorization: `Bearer ${parsedCookies.token}`,
               },
-            }
+            },
           );
 
           if (res.status == 201) {

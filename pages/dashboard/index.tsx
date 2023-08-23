@@ -64,13 +64,13 @@ const fetcher = (url) => {
       } else {
         return [];
       }
-    }
+    },
   );
 };
 function LoadPosts(auth) {
   const { data, error } = useSWR(
-    "https://cleverbackend.herokuapp.com/api/posts",
-    fetcher
+    "https://clever-backend.onrender.com/api/posts",
+    fetcher,
   );
 
   if (error) {
@@ -129,7 +129,7 @@ const Dashboard: NextPage = (props: any) => {
   };
 
   const loadMorePosts = () => {
-    const myPromise = mutate("https://cleverbackend.herokuapp.com/api/posts");
+    const myPromise = mutate("https://clever-backend.onrender.com/api/posts");
     // scroll to top
     window.scrollTo(0, 0);
     toast.promise(myPromise, {
