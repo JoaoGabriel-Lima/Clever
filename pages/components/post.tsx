@@ -141,7 +141,7 @@ const Post = (props) => {
             <div className="rounded-full w-full h-full min-h-[3.4rem] bg-[#51516c]/50 animate-pulse"></div>
           ) : (
             <img
-              src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${props.auth.name}`}
+              src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${props.name}`}
               className="rounded-full bg-[#636382]"
               alt="Profile"
             />
