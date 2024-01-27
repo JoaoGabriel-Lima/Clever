@@ -64,13 +64,13 @@ const fetcher = (url) => {
       } else {
         return [];
       }
-    },
+    }
   );
 };
 function LoadPosts(auth) {
   const { data, error } = useSWR(
     "https://clever-backend.onrender.com/api/posts",
-    fetcher,
+    fetcher
   );
 
   if (error) {
@@ -178,7 +178,7 @@ const Dashboard: NextPage = (props: any) => {
               {props.auth && (
                 <img
                   className="w-full h-full rounded-full bg-[#636382]"
-                  src={`https://avatars.dicebear.com/api/miniavs/${props.auth.name}.svg`}
+                  src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${props.auth.name}`}
                   alt="Profile"
                 ></img>
               )}
