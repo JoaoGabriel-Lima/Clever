@@ -44,7 +44,7 @@ const Post = (props) => {
                 headers: {
                   Authorization: `Bearer ${parsedCookies.token}`,
                 },
-              },
+              }
             );
             if (res.status == 201) {
               mutate("https://clever-backend.onrender.com/api/posts");
@@ -59,7 +59,7 @@ const Post = (props) => {
             return false;
           }
         }
-      },
+      }
     );
   };
 
@@ -74,7 +74,7 @@ const Post = (props) => {
     const parsedCookies = parseCookies();
     return checkUserToken(
       parsedCookies.token,
-      parsedCookies.refresh_token,
+      parsedCookies.refresh_token
     ).then(async (res) => {
       if (res == true) {
         try {
@@ -85,7 +85,7 @@ const Post = (props) => {
               headers: {
                 Authorization: `Bearer ${parsedCookies.token}`,
               },
-            },
+            }
           );
 
           if (res.status == 201) {
@@ -141,7 +141,7 @@ const Post = (props) => {
             <div className="rounded-full w-full h-full min-h-[3.4rem] bg-[#51516c]/50 animate-pulse"></div>
           ) : (
             <img
-              src={`https://avatars.dicebear.com/api/miniavs/${props.name}.svg`}
+              src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${props.auth.name}`}
               className="rounded-full bg-[#636382]"
               alt="Profile"
             />
